@@ -16,9 +16,8 @@ public class Ex4 {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 500);
         frame.setLocationRelativeTo(null);
-        frame.setLayout(null); // Using absolute positioning
+        frame.setLayout(null); 
 
-        // Table setup
         String[] columnNames = {"ID", "Name", "Age", "Major"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         JTable table = new JTable(model);
@@ -26,7 +25,6 @@ public class Ex4 {
         scrollPane.setBounds(20, 20, 650, 250);
         frame.add(scrollPane);
 
-        // Read student data from file
         try (BufferedReader br = new BufferedReader(new FileReader("students.csv"))) {
             String line;
             boolean isFirstLine = true;
@@ -42,7 +40,6 @@ public class Ex4 {
             JOptionPane.showMessageDialog(frame, "Error reading file", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        // Labels and input fields
         JLabel idLabel = new JLabel("ID:");
         idLabel.setBounds(20, 280, 100, 25);
         frame.add(idLabel);
@@ -75,12 +72,10 @@ public class Ex4 {
         majorField.setBounds(120, 370, 200, 25);
         frame.add(majorField);
 
-        // Add button
         JButton addButton = new JButton("Add Student");
         addButton.setBounds(120, 410, 150, 30);
         frame.add(addButton);
 
-        // Add action listener to the "Add Student" button
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,21 +84,17 @@ public class Ex4 {
                 String age = ageField.getText();
                 String major = majorField.getText();
 
-                // Check if all fields are filled
                 if (id.isEmpty() || name.isEmpty() || age.isEmpty() || major.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    // Add the new student to the table
                     model.addRow(new Object[]{id, name, age, major});
 
-                    // Append the new student to the CSV file
                     try (FileWriter fw = new FileWriter("students.csv", true)) {
                         fw.write("\n" + id + "," + name + "," + age + "," + major);
                     } catch (IOException ex) {
                         JOptionPane.showMessageDialog(frame, "Error saving student to file", "Error", JOptionPane.ERROR_MESSAGE);
                     }
 
-                    // Clear the input fields
                     idField.setText("");
                     nameField.setText("");
                     ageField.setText("");
@@ -112,7 +103,6 @@ public class Ex4 {
             }
         });
 
-        // Display the frame
         frame.setVisible(true);
     }
 }

@@ -1,6 +1,7 @@
 package Lab10;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,20 +21,19 @@ public class Ex1 {
         JFrame frame = new JFrame("First Program in GUI");
         frame.setIconImage(icon.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
+        frame.setSize(400, 200);
         frame.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
 
-        // Label to display count
         label = new JLabel("0", JLabel.CENTER);
-        label.setFont(new Font("Arial", Font.BOLD, 24));
+        label.setFont(new Font(null, Font.BOLD, 24));
         frame.add(label, BorderLayout.CENTER);
 
-        // Panel to hold buttons
         JPanel buttonPanel = new JPanel(new FlowLayout());
         
         JButton increaseButton = new JButton("Increase");
         increaseButton.setFocusable(false);
+        increaseButton.setBackground(Color.GREEN);
         increaseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,6 +45,7 @@ public class Ex1 {
 
         JButton decreaseButton = new JButton("Decrease");
         decreaseButton.setFocusable(false);
+        decreaseButton.setBackground(Color.RED);
         decreaseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

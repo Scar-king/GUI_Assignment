@@ -15,7 +15,7 @@ public class Ex3 {
         frame.setIconImage(icon.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
-        frame.setLayout(null); // Using absolute positioning
+        frame.setLayout(null); 
         frame.setLocationRelativeTo(null);
 
         String[] columnNames = {"ID", "Name", "Age", "Major"};
@@ -29,7 +29,7 @@ public class Ex3 {
             String line;
             boolean isFirstLine = true;
             while ((line = br.readLine()) != null) {
-                if (isFirstLine) { // Skip the header row
+                if (isFirstLine) { 
                     isFirstLine = false;
                     continue;
                 }
